@@ -4,20 +4,20 @@
 
 [General]
 loglevel = notify
+
 skip-proxy = 127.0.0.0/24, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, 100.64.0.0/10, localhost, *.local, *.crashlytics.com
+
 dns-server = 8.8.8.8, 1.1.1.1, 119.29.29.29, 114.114.114.114
+
 replica = 0
+
 ipv6 = true
 
 #iOS专用
+
 bypass-system = true
 
-#macOS专用
-interface = 0.0.0.0
-port = 8000
-socks-port = 8001
-external-controller-access = yeshigeek@0.0.0.0:8002
-enhanced-mode-by-rule = true
+
 
 [Proxy]
 # 请在此处添加您的中国代理服务器
