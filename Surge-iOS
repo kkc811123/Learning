@@ -8,16 +8,16 @@ loglevel = notify
 skip-proxy = 127.0.0.0/24, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, 100.64.0.0/10, localhost, *.local, *.crashlytics.com
 
 dns-server = 8.8.8.8, 1.1.1.1, 119.29.29.29, 114.114.114.114
+encrypted-dns-server = https://223.5.5.5/dns-query, https://1.1.1.1/dns-query
 
 replica = 0
-
 ipv6 = true
 
 #iOS专用
-
 bypass-system = true
+bypass-tun = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12
 
-
+# Block-Quic = true
 
 [Proxy]
 # 请在此处添加您的中国代理服务器
