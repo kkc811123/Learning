@@ -157,6 +157,33 @@ hdslb.com = server:119.29.29.29
 *.facebook.com = server:1.1.1.1
 *.twitter.com = server:1.1.1.1
 
+# 国内抖音DNS
+*.douyin.com = server:119.29.29.29
+*.douyinpic.com = server:119.29.29.29
+*.douyinvod.com = server:119.29.29.29
+*.toutiao.com = server:119.29.29.29
+*.pstatp.com = server:119.29.29.29
+*.byteimg.com = server:119.29.29.29
+*.bytedns.net = server:119.29.29.29
+*.snssdk.com = server:119.29.29.29
+
+# 国内音乐 DNS
+*.music.163.com = server:119.29.29.29
+*.music.126.net = server:119.29.29.29
+*.163.com = server:119.29.29.29
+*.126.net = server:119.29.29.29
+*.netease.com = server:119.29.29.29
+*.ydstatic.com = server:119.29.29.29
+
+# 海外流媒体使用无污染DNS
+*.netflix.com = server:1.1.1.1
+*.youtube.com = server:8.8.8.8
+*.google.com = server:1.0.0.1
+github.com = server:1.1.1.1
+*.github.com = server:1.1.1.1
+*.githubusercontent.com = server:1.1.1.1
+
+
 [URL Rewrite]
 # URL重写规则
 # 阻止google.com 跳转到google.com.hk
