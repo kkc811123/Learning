@@ -1,0 +1,184 @@
+#!MANAGED-CONFIG https://your-config-url.com/surge.conf interval=86400 strict=false
+
+[General]
+# 通用设置
+loglevel = notify
+internet-test-url = http://www.baidu.com
+proxy-test-url = http://www.google.com/generate_204
+test-timeout = 3
+ipv6 = true
+ipv6-vif = auto
+
+# DNS设置
+dns-server = 223.5.5.5, 119.29.29.29, system
+encrypted-dns-server = https://dns.alidns.com/dns-query
+doh-skip-cert-verification = false
+doh-format = json
+
+# 高级设置
+allow-wifi-access = true
+wifi-access-http-port = 6152
+wifi-access-socks5-port = 6153
+http-listen = 0.0.0.0:6152
+socks5-listen = 0.0.0.0:6153
+
+# 兼容性
+compatibility-mode = false
+skip-proxy = 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, 100.64.0.0/10, localhost, *.local, passenger.t3go.cn
+bypass-tun = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12
+
+# 实验性功能
+network-framework = false
+exclude-simple-hostnames = true
+show-error-page-for-reject = true
+
+# 新版本功能
+block-quic = false
+include-all-networks = false
+include-local-networks = false
+
+[Replica]
+# 抓包设置
+hide-apple-request = true
+hide-crash-reporter-request = true
+hide-udp = false
+keyword-filter-type = false
+
+[Proxy]
+# 代理服务器配置示例
+# 请替换为您自己的代理服务器信息
+
+# Shadowsocks 示例
+🇺🇸 US Server = ss, your-server.com, 443, encrypt-method=aes-256-gcm, password=your-password
+🇭🇰 HK Server = ss, hk-server.com, 443, encrypt-method=aes-256-gcm, password=your-password
+
+# Trojan 示例
+🇯🇵 JP Server = trojan, jp-server.com, 443, password=your-password, sni=jp-server.com
+
+# HTTP/HTTPS 示例
+🇸🇬 SG Server = http, sg-server.com, 80, username, password
+
+# SOCKS5 示例
+🇬🇧 UK Server = socks5, uk-server.com, 1080, username, password
+
+[Proxy Group]
+
+# 代理策略组
+
+🚀 节点选择 = select, 🇺🇸 US Server, 🇭🇰 HK Server, 🇯🇵 JP Server, 🇸🇬 SG Server, 🇬🇧 UK Server, DIRECT
+
+🎯 全球直连 = select, DIRECT
+
+💬 OpenAI = select, 🚀 节点选择, 🇺🇸 US Server
+
+🎵 网易音乐 = select, DIRECT, 🚀 节点选择
+
+🌍 国外媒体 = select, 🚀 节点选择, DIRECT
+
+🌏 国内媒体 = select, DIRECT, 🚀 节点选择
+
+🍎 苹果服务 = select, DIRECT, 🚀 节点选择
+
+🐟 漏网之鱼 = select, 🚀 节点选择, DIRECT
+
+[Rule]
+# 规则集配置
+# 本地网络直连
+RULE-SET,SYSTEM,DIRECT
+
+# 广告拦截
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Advertising/Advertising.list,REJECT
+
+# 隐私保护
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Privacy/Privacy.list,REJECT
+
+# 谷歌FCM
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GoogleFCM/GoogleFCM.list,DIRECT
+
+# Telegram
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Telegram/Telegram.list,DIRECT
+
+# OpenAI
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list,💬 OpenAI
+
+# 网易云音乐
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/NetEaseMusic/NetEaseMusic.list,🎵 网易音乐
+
+# 国外媒体
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GlobalMedia/GlobalMedia.list,🌍 国外媒体
+
+# 国内媒体
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMedia/ChinaMedia.list,📺 国内媒体
+
+# 微软服务
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Microsoft/Microsoft.list,Ⓜ️ 微软服务
+
+# 苹果服务
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Apple/Apple.list,🍎 苹果服务
+
+# 全球加速
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Proxy/Proxy.list,🚀 节点选择
+
+# 全球直连
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Direct/Direct.list,🎯 全球直连
+
+# 中国直连
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/China/China.list,🎯 全球直连
+
+# Local Area Network 局域网
+RULE-SET,LAN,DIRECT
+
+# GeoIP China 中国
+GEOIP,CN,🎯 全球直连
+
+# 漏网之鱼
+FINAL,🐟 漏网之鱼,dns-failed
+
+[Host]
+# DNS映射
+*.taobao.com = server:223.5.5.5
+*.tmall.com = server:223.5.5.5
+*.alipay.com = server:223.5.5.5
+*.alicdn.com = server:223.5.5.5
+*.aliyun.com = server:223.5.5.5
+*.jd.com = server:119.28.28.28
+*.qq.com = server:119.28.28.28
+*.tencent.com = server:119.28.28.28
+*.weixin.com = server:119.28.28.28
+*.bilibili.com = server:119.29.29.29
+hdslb.com = server:119.29.29.29
+*.163.com = server:119.29.29.29
+*.126.com = server:119.29.29.29
+*.126.net = server:119.29.29.29
+*.127.net = server:119.29.29.29
+*.netease.com = server:119.29.29.29
+*.google.com = server:8.8.8.8
+*.youtube.com = server:8.8.8.8
+*.facebook.com = server:1.1.1.1
+*.twitter.com = server:1.1.1.1
+
+[URL Rewrite]
+# URL重写规则
+# 阻止google.com 跳转到google.com.hk
+^https?:\/\/(www\.)?g\.cn https://www.google.com 302
+^https?:\/\/(www\.)?google\.cn https://www.google.com 302
+
+[Script]
+
+[Header Rewrite]
+# HTTP请求头重写
+^https?://.*\.iqiyi\.com/.* header-add X-Forwarded-For 1.1.1.1
+
+[MITM]
+# HTTPS解密设置
+hostname = *.google.cn, *.google.com.hk, www.zhihu.com, api.zhihu.com, *.iqiyi.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com
+
+# 跳过服务端证书验证
+skip-server-cert-verify = false
+
+# MITM over HTTP/2
+h2 = true
+
+# 证书生成器
+ca-passphrase = Surge
+ca-p12 = [证书内容需要在Surge中生成]
