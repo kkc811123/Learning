@@ -31,7 +31,7 @@ exclude-simple-hostnames = true
 show-error-page-for-reject = true
 
 # 新版本功能
-block-quic = false
+block-quic = true
 include-all-networks = false
 include-local-networks = false
 
