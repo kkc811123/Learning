@@ -69,7 +69,7 @@ keyword-filter-type = false
 
 🎯 全球直连 = select, DIRECT
 
-💬 OpenAI = select, 🚀 节点选择, 🇺🇸 US Server
+💬 人工智能 = select, 🚀 节点选择, 🇺🇸 US Server
 
 🎵 网易音乐 = select, DIRECT, 🚀 节点选择
 
@@ -98,8 +98,8 @@ RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/r
 # Telegram
 RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Telegram/Telegram.list,DIRECT
 
-# OpenAI
-RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list,💬 OpenAI
+# 人工智能(OpenAI)
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list,💬 人工智能
 
 # 网易云音乐
 RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/NetEaseMusic/NetEaseMusic.list,🎵 网易音乐
